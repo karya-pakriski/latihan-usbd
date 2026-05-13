@@ -51,46 +51,69 @@
     .layer.active-block { display: block !important; padding-bottom: 40px; }
 
     /* ══════════════════════════════════════════════════════════════════════
-       HALAMAN LOGIN (input ID)
+       HALAMAN LOGIN
     ══════════════════════════════════════════════════════════════════════ */
     #layer-login {
       background-color: var(--green-950);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cdefs%3E%3Cpattern id='geo' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Crect width='80' height='80' fill='none'/%3E%3Cg stroke='%23166534' stroke-width='1' fill='none'%3E%3Cpolygon points='40,4 52,28 76,28 58,44 64,68 40,56 16,68 22,44 4,28 28,28'/%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Crect x='24' y='24' width='32' height='32'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='80' height='80' fill='url(%23geo)'/%3E%3C/svg%3E");
-      position: relative; overflow: hidden;
+      position: relative;
+      overflow: hidden;
     }
     #layer-login::before {
-      content: ''; position: absolute; inset: 0;
+      content: '';
+      position: absolute;
+      inset: 0;
       background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(22,163,74,.18) 0%, transparent 70%);
       pointer-events: none;
     }
 
     .login-card {
-      position: relative; background: var(--cream); border-radius: 28px;
+      position: relative;
+      background: var(--cream);
+      border-radius: 28px;
       box-shadow: var(--shadow-card), 0 0 0 1px rgba(255,255,255,.12);
-      padding: 40px 28px 36px; width: 92%; max-width: 400px; z-index: 1;
+      padding: 40px 28px 36px;
+      width: 92%;
+      max-width: 400px;
+      z-index: 1;
       animation: cardIn .6s cubic-bezier(.22,1,.36,1) both;
     }
-    @keyframes cardIn { from { opacity: 0; transform: translateY(28px) scale(.97); } to { opacity: 1; transform: none; } }
+
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(28px) scale(.97); }
+      to   { opacity: 1; transform: none; }
+    }
 
     .card-topbar {
-      display: flex; align-items: center; justify-content: center; gap: 10px;
-      background: var(--green-800); border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-      margin: -40px -28px 28px; padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: var(--green-800);
+      border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+      margin: -40px -28px 28px;
+      padding: 14px 20px;
     }
     .card-topbar svg { width: 20px; height: 20px; fill: var(--green-100); flex-shrink: 0; }
     .card-topbar span { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green-100); }
 
     .login-emblem {
-      width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--green-600), var(--green-800));
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
-      box-shadow: 0 8px 24px rgba(22,163,74,.3); animation: cardIn .7s .1s cubic-bezier(.22,1,.36,1) both;
+      width: 68px; height: 68px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--green-600), var(--green-800));
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; box-shadow: 0 8px 24px rgba(22,163,74,.3);
+      animation: cardIn .7s .1s cubic-bezier(.22,1,.36,1) both;
     }
     .login-emblem svg { width: 36px; height: 36px; fill: white; }
 
     .login-title { font-size: 19px; font-weight: 800; color: var(--slate-900); text-align: center; line-height: 1.25; letter-spacing: -.4px; animation: cardIn .7s .15s cubic-bezier(.22,1,.36,1) both; }
     .login-school { font-size: 13px; font-weight: 700; color: var(--green-700); text-align: center; margin-top: 4px; letter-spacing: .2px; animation: cardIn .7s .2s cubic-bezier(.22,1,.36,1) both; }
 
-    .login-quote { background: var(--gold-light); color: var(--gold); border: 1px solid rgba(217,119,6,.2); padding: 6px 14px; border-radius: 30px; font-size: 12.5px; font-weight: 700; font-style: italic; margin: 14px auto 28px; display: block; text-align: center; animation: cardIn .7s .25s cubic-bezier(.22,1,.36,1) both; }
+    .login-quote {
+      background: var(--gold-light); color: var(--gold); border: 1px solid rgba(217,119,6,.2);
+      padding: 6px 14px; border-radius: 30px; font-size: 12.5px; font-weight: 700; font-style: italic;
+      margin: 14px auto 28px; display: block; text-align: center; animation: cardIn .7s .25s cubic-bezier(.22,1,.36,1) both;
+    }
 
     .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; animation: cardIn .7s .3s cubic-bezier(.22,1,.36,1) both; }
     .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--slate-200); }
@@ -106,25 +129,26 @@
     input[type="text"]:focus { border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(22,163,74,.12); }
 
     .btn {
-      width: 100%; padding: 16px; background: linear-gradient(135deg, var(--green-600), var(--green-700)); color: white;
-      border: none; border-radius: var(--radius-lg); font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer;
-      display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: var(--shadow-btn);
+      width: 100%; padding: 16px; border: none; border-radius: var(--radius-lg); font-family: inherit; font-size: 15px; font-weight: 800; cursor: pointer;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
       transition: transform .15s, box-shadow .15s, background .2s; animation: cardIn .7s .4s cubic-bezier(.22,1,.36,1) both;
       margin-top: 8px;
     }
-    .btn:not(:disabled):hover  { transform: translateY(-2px); box-shadow: 0 12px 28px -4px rgba(21,128,61,.4); }
-    .btn:not(:disabled):active { transform: translateY(1px);  box-shadow: 0 4px 12px rgba(21,128,61,.3); }
+    .btn-primary { background: linear-gradient(135deg, var(--green-600), var(--green-700)); color: white; box-shadow: var(--shadow-btn); }
+    .btn-danger { background: var(--red-500); color: white; box-shadow: 0 8px 20px -4px rgba(239,68,68,.35); }
+    .btn-neutral { background: var(--slate-100); color: var(--slate-700); box-shadow: none; }
+    .btn:not(:disabled):hover  { transform: translateY(-2px); }
+    .btn:not(:disabled):active { transform: translateY(1px); }
     .btn:disabled { background: var(--slate-200); color: var(--slate-500); box-shadow: none; cursor: not-allowed; }
     .btn svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 
     .error-msg { color: var(--red-500); font-size: 13px; font-weight: 600; margin-top: 8px; display: none; }
 
     /* ══════════════════════════════════════════════════════════════════════
-       LAYER KONFIRMASI
+       LAYER KONFIRMASI (POLOS)
     ══════════════════════════════════════════════════════════════════════ */
     #layer-confirm {
-      background: linear-gradient(160deg, var(--green-950) 0%, #0a3320 100%);
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cdefs%3E%3Cpattern id='geo' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg stroke='%23166534' stroke-width='1' fill='none'%3E%3Cpolygon points='40,4 52,28 76,28 58,44 64,68 40,56 16,68 22,44 4,28 28,28'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='80' height='80' fill='url(%23geo)'/%3E%3C/svg%3E");
+      background: linear-gradient(160deg, #0a3320 0%, var(--green-950) 100%);
     }
     .confirm-card {
       background: var(--cream); border-radius: 28px; box-shadow: var(--shadow-card);
@@ -167,7 +191,8 @@
     .q-text li { margin-bottom: 6px; line-height: 1.6; }
 
     .arabic {
-      direction: rtl; text-align: right; font-family: 'Traditional Arabic', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', serif;
+      direction: rtl; text-align: right;
+      font-family: 'Traditional Arabic', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', serif;
       font-size: 32px; line-height: 2.2; margin: 14px 0; padding: 14px 18px;
       background: var(--green-50); border-right: 4px solid var(--green-600); border-radius: 10px 0 0 10px;
     }
@@ -177,7 +202,6 @@
     th { background: var(--slate-50); font-weight: 700; color: var(--slate-700); font-size: 12.5px; text-transform: uppercase; }
     tr:last-child td { border-bottom: none; }
 
-    /* Opsi tanpa label huruf */
     .options-grid { display: flex; flex-direction: column; gap: 8px; }
     .option-label {
       position: relative; display: flex; align-items: center; padding: 12px 16px;
@@ -188,12 +212,23 @@
     .option-label:active { transform: scale(.98); }
     .option-label input { position: absolute; opacity: 0; width: 0; height: 0; }
 
-    .option-bullet {width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid var(--slate-500);   /* lebih gelap & sedikit lebih tebal */ margin-right: 14px;  flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s;  background: white; }
-    .option-bullet::after {content: ''; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background .2s; }
-
+    .option-bullet {
+      width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid var(--slate-500); margin-right: 14px;
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, background .2s; background: white;
+    }
+    .option-bullet::after {
+      content: ''; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background .2s;
+    }
     .option-label.selected { border-color: var(--green-600); background: var(--green-50); color: var(--green-800); }
     .option-label.selected .option-bullet { border-color: var(--green-600); background: var(--green-600); }
     .option-label.selected .option-bullet::after { background: white; }
+
+    /* Khusus teks Arab di opsi */
+    .arabic-opt {
+      font-family: 'Traditional Arabic', 'Noto Naskh Arabic', 'Amiri', 'Scheherazade New', serif;
+      font-size: 26px; line-height: 1.4; direction: rtl; unicode-bidi: isolate; display: inline-block; margin-right: 4px;
+    }
 
     .static-action { margin-top: 30px; padding-top: 24px; border-top: 2px dashed var(--slate-200); display: flex; justify-content: center; }
     .static-btn-wrapper { width: 100%; max-width: 420px; }
@@ -222,7 +257,7 @@
     .score-label { font-size: 12px; font-weight: 700; color: var(--slate-500); text-transform: uppercase; }
 
     .stat-row { display: flex; justify-content: center; gap: 20px; margin-bottom: 28px; }
-    .stat-item { background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 12px 20px; }
+    .stat-item { background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 12px 20px; text-align: center; }
     .stat-item .num  { font-size: 24px; font-weight: 900; color: var(--slate-900); }
     .stat-item .lbl  { font-size: 11.5px; font-weight: 600; color: var(--slate-500); text-transform: uppercase; }
     .stat-item.correct .num { color: var(--green-700); }
@@ -242,7 +277,6 @@
 </head>
 <body>
 
-<!-- LAYER LOGIN -->
 <div id="layer-login" class="layer active-flex">
   <div class="login-card">
     <div class="card-topbar">
@@ -261,28 +295,26 @@
       <input type="text" id="student-id" placeholder="Contoh: G001" autocomplete="off" autocapitalize="characters">
       <div class="error-msg" id="login-error">ID tidak ditemukan. Coba lagi.</div>
     </div>
-    <button id="btn-login" class="btn" disabled>
+    <button id="btn-login" class="btn btn-primary" disabled>
       <svg viewBox="0 0 24 24"><path d="M5 3l14 9-14 9V3z"/></svg> Lanjutkan
     </button>
   </div>
 </div>
 
-<!-- LAYER KONFIRMASI -->
 <div id="layer-confirm" class="layer">
   <div class="confirm-card">
     <div class="confirm-icon">👋</div>
-    <h2 class="confirm-greeting" id="confirm-greeting">Halo, <span id="confirm-name"></span></h2>
-    <p class="confirm-detail" id="confirm-detail">Sekolah: <span id="confirm-school"></span></p>
-    <button id="btn-start-quiz" class="btn">
+    <h2 class="confirm-greeting">Halo, <span id="confirm-name"></span></h2>
+    <p class="confirm-detail">Sekolah: <span id="confirm-school"></span></p>
+    <button id="btn-start-quiz" class="btn btn-primary">
       <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg> Mulai Ujian
     </button>
-    <button id="btn-change-id" class="btn" style="background: var(--slate-100); color: var(--slate-700); box-shadow: none; margin-top: 12px;">
+    <button id="btn-change-id" class="btn btn-neutral" style="margin-top:12px;">
       Ganti ID
     </button>
   </div>
 </div>
 
-<!-- LAYER QUIZ -->
 <div id="layer-quiz" class="layer">
   <div class="glass-header">
     <div class="header-brand">
@@ -297,7 +329,7 @@
   <div class="quiz-container" id="quiz-container"></div>
   <div class="static-action" id="action-container" style="display: none;">
     <div class="static-btn-wrapper">
-      <button id="btn-submit" class="btn">
+      <button id="btn-submit" class="btn btn-primary">
         Kirim Jawaban
         <svg viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
       </button>
@@ -305,7 +337,6 @@
   </div>
 </div>
 
-<!-- LAYER HASIL -->
 <div id="layer-result" class="layer">
   <div class="result-card">
     <span class="result-emoji" id="result-emoji">🎉</span>
@@ -327,9 +358,13 @@
       <div class="stat-item attempt-info"><div class="num" id="attempt-count">1</div><div class="lbl">Percobaan</div></div>
     </div>
     <p class="result-message" id="result-message"></p>
-    <button id="btn-retry" class="btn">
+    <button id="btn-retry" class="btn btn-primary">
       <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0 0 12 4C7.58 4 4 7.58 4 12s3.58 8 8 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
       Ulangi Latihan
+    </button>
+    <button id="btn-end" class="btn btn-danger" style="margin-top:12px;">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+      Akhiri Ujian
     </button>
   </div>
 </div>
@@ -344,19 +379,17 @@
   (function() {
     const GAS_URL = "https://script.google.com/macros/s/AKfycbwpxde727mzPIU9_AlYs-uS0MBBFKwDmML7YKLk0N7qj1td7x0yX-Z6C1OzFOjAW3r_bA/exec";
 
-    // State global
     let globalQuestions = [];
     let globalStudents = [];
     let globalSettings = {};
-    let currentUser = "";          // ID siswa
+    let currentUser = "";
     let currentUserName = "";
     let currentUserSchool = "";
     let timerInterval = null;
     let timerSeconds = 0;
-    let quizData = null;          // data soal teracak yang sedang aktif
-    let userAnswers = {};         // jawaban sementara
+    let quizData = null;
+    let userAnswers = {};
 
-    // DOM elements
     const layerLogin = document.getElementById("layer-login");
     const layerConfirm = document.getElementById("layer-confirm");
     const layerQuiz = document.getElementById("layer-quiz");
@@ -372,18 +405,15 @@
     const actionContainer = document.getElementById("action-container");
     const btnSubmit = document.getElementById("btn-submit");
     const btnRetry = document.getElementById("btn-retry");
+    const btnEnd = document.getElementById("btn-end");
     const timerPill = document.getElementById("timer-pill");
     const progressText = document.getElementById("progress-text");
 
-    // Helper: tampilkan/sembunyikan layer
     function switchLayer(layer, type) {
-      [layerLogin, layerConfirm, layerQuiz, layerResult].forEach(l => {
-        l.classList.remove("active-flex", "active-block");
-      });
+      [layerLogin, layerConfirm, layerQuiz, layerResult].forEach(l => l.classList.remove("active-flex", "active-block"));
       layer.classList.add(`active-${type}`);
     }
 
-    // Helper: shuffle array (Fisher-Yates)
     function shuffleArray(arr) {
       for (let i = arr.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
@@ -392,17 +422,13 @@
       return arr;
     }
 
-    // Helper: loading overlay
     function showLoading(text, sub) {
       document.getElementById("loading-text").textContent = text || "Memproses...";
       document.getElementById("loading-sub").textContent = sub || "";
       document.getElementById("loading-overlay").style.display = "flex";
     }
-    function hideLoading() {
-      document.getElementById("loading-overlay").style.display = "none";
-    }
+    function hideLoading() { document.getElementById("loading-overlay").style.display = "none"; }
 
-    // Fetch data dari server (soal + siswa + pengaturan)
     async function fetchInitialData() {
       showLoading("Mengambil paket soal...", "Harap tunggu sebentar");
       try {
@@ -412,10 +438,8 @@
         globalQuestions = data.questions || [];
         globalStudents = data.students || [];
         globalSettings = data.settings || {};
-        const menit = parseInt(globalSettings.Waktu_Menit || 0, 10);
-        timerSeconds = menit > 0 ? menit * 60 : 0;
+        timerSeconds = parseInt(globalSettings.Waktu_Menit || 0, 10) * 60;
         hideLoading();
-        // Setelah data siap, periksa apakah ada sesi kuis tersimpan
         checkSavedSession();
       } catch (e) {
         hideLoading();
@@ -426,14 +450,12 @@
       }
     }
 
-    // Cek apakah ada sesi kuis yang tersimpan (reload)
     function checkSavedSession() {
       const savedId = sessionStorage.getItem("activeQuizId");
       if (savedId && globalStudents.some(s => s.id === savedId)) {
         const savedQuiz = sessionStorage.getItem(`quizData_${savedId}`);
         const savedAnswers = sessionStorage.getItem(`quizAnswers_${savedId}`);
         if (savedQuiz && savedAnswers) {
-          // restore
           currentUser = savedId;
           const student = globalStudents.find(s => s.id === savedId);
           currentUserName = student.nama;
@@ -444,39 +466,33 @@
           return;
         }
       }
-      // Jika tidak ada sesi, tampilkan login
       switchLayer(layerLogin, "flex");
       btnLogin.disabled = true;
       inputStudentId.value = "";
     }
 
-    // Validasi ID dan pindah ke konfirmasi
     function handleLogin() {
       const id = inputStudentId.value.trim().toUpperCase();
       if (!id) return;
       const student = globalStudents.find(s => s.id === id);
       if (!student) {
         loginError.style.display = "block";
-        inputStudentId.classList.add("error");
         return;
       }
       loginError.style.display = "none";
-      inputStudentId.classList.remove("error");
       currentUser = student.id;
       currentUserName = student.nama;
       currentUserSchool = student.sekolah;
-      // Tampilkan layer konfirmasi
       confirmName.textContent = currentUserName;
       confirmSchool.textContent = currentUserSchool;
       switchLayer(layerConfirm, "flex");
     }
 
-    // Mulai ujian dari konfirmasi (atau inisialisasi baru)
     function startNewQuiz() {
-      // Hapus sesi lama jika ada
       sessionStorage.removeItem(`quizData_${currentUser}`);
       sessionStorage.removeItem(`quizAnswers_${currentUser}`);
-      // Generate soal teracak
+      sessionStorage.removeItem(`timerEnd_${currentUser}`);
+
       const questionsCopy = [...globalQuestions];
       const shuffledQuestions = shuffleArray(questionsCopy).map(q => {
         let opts = [
@@ -485,22 +501,17 @@
           { key: "C", text: q.Opsi_C },
           { key: "D", text: q.Opsi_D },
         ];
-        // acak opsi
         opts = shuffleArray(opts);
-        // Simpan mapping visual key? Tidak perlu, karena kita tidak pakai label.
         return { ...q, shuffledOpts: opts };
       });
       quizData = shuffledQuestions;
       userAnswers = {};
-      // Simpan ke sessionStorage
       sessionStorage.setItem("activeQuizId", currentUser);
       sessionStorage.setItem(`quizData_${currentUser}`, JSON.stringify(quizData));
       sessionStorage.setItem(`quizAnswers_${currentUser}`, JSON.stringify(userAnswers));
-      // Render
       renderQuizFromData();
     }
 
-    // Render soal dari quizData (baik baru maupun restore)
     function renderQuizFromData() {
       switchLayer(layerQuiz, "block");
       quizContainer.innerHTML = "";
@@ -516,11 +527,14 @@
         const optsHtml = q.shuffledOpts.map(opt => {
           const checkedAttr = selectedKey === opt.key ? "checked" : "";
           const selectedClass = selectedKey === opt.key ? "selected" : "";
-          return `
+const textFormatted = opt.text.replace(
+  /([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+(?:\s+[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+)*)/g,
+  '<span class="arabic-opt">$1</span>');
+  return `
             <label class="option-label ${selectedClass}">
               <input type="radio" name="q_${q.id}" value="${opt.key}" ${checkedAttr}>
               <div class="option-bullet"></div>
-              <span>${opt.text}</span>
+              <span>${textFormatted}</span>
             </label>`;
         }).join("");
 
@@ -536,33 +550,25 @@
       actionContainer.style.display = "flex";
       updateProgress(answeredCount);
 
-      // Event listener untuk radio button
       document.querySelectorAll('.option-label input[type="radio"]').forEach(radio => {
         radio.addEventListener("change", function() {
           const card = this.closest(".question-card");
-          const qId = card.dataset.id;
           card.classList.remove("missed");
-          // Hapus selected dari semua opsi di card ini
           card.querySelectorAll(".option-label").forEach(l => l.classList.remove("selected"));
           this.closest(".option-label").classList.add("selected");
-          // Simpan jawaban
-          userAnswers[qId] = this.value;
+          userAnswers[card.dataset.id] = this.value;
           sessionStorage.setItem(`quizAnswers_${currentUser}`, JSON.stringify(userAnswers));
           updateProgress();
         });
       });
 
-      // Timer
       if (timerSeconds > 0) startTimer();
-
       btnSubmit.onclick = submitQuiz;
     }
 
     function updateProgress(answeredCount) {
       const total = quizData.length;
-      if (answeredCount === undefined) {
-        answeredCount = Object.keys(userAnswers).length;
-      }
+      if (answeredCount === undefined) answeredCount = Object.keys(userAnswers).length;
       progressText.textContent = `${answeredCount} / ${total}`;
     }
 
@@ -585,7 +591,7 @@
         timerPill.textContent = `⏱ ${m}:${s}`;
         if (remaining <= 60) timerPill.classList.add("danger");
         if (remaining <= 0) {
-          clearInterval(timerInterval);
+          clearTimeout(timerInterval);
           stopTimer();
           alert("Waktu habis! Jawabanmu otomatis dikirim.");
           executeSubmit();
@@ -597,10 +603,7 @@
     }
 
     function stopTimer() {
-      if (timerInterval) {
-        clearTimeout(timerInterval);
-        timerInterval = null;
-      }
+      if (timerInterval) { clearTimeout(timerInterval); timerInterval = null; }
       timerPill.style.display = "none";
     }
 
@@ -625,28 +628,21 @@
 
     async function executeSubmit() {
       showLoading("Mengoreksi jawaban...", "Koneksi ke server berjalan");
-      // Pastikan jawaban terbaru
       const answers = {};
       document.querySelectorAll(".question-card").forEach(card => {
         const checked = card.querySelector('input[type="radio"]:checked');
         if (checked) answers[card.dataset.id] = checked.value;
       });
-      // Update userAnswers
       userAnswers = answers;
       sessionStorage.setItem(`quizAnswers_${currentUser}`, JSON.stringify(userAnswers));
 
-      const payload = { name: currentUser, answers };  // backend menerima 'name' sebagai ID
-
+      const payload = { name: currentUser, answers };
       try {
-        const response = await fetch(GAS_URL, {
-          method: "POST",
-          body: JSON.stringify(payload),
-        });
+        const response = await fetch(GAS_URL, { method: "POST", body: JSON.stringify(payload) });
         if (!response.ok) throw new Error("HTTP " + response.status);
         const data = await response.json();
         hideLoading();
         if (data.status === "success") {
-          // Hapus sesi setelah sukses
           sessionStorage.removeItem("activeQuizId");
           sessionStorage.removeItem(`quizData_${currentUser}`);
           sessionStorage.removeItem(`quizAnswers_${currentUser}`);
@@ -667,15 +663,11 @@
       const total = data.total;
       const attempt = data.attempt;
       let emoji, title, message;
-      if (score >= 90) {
-        emoji = "🏆"; title = "Luar Biasa!"; message = "Hasil yang sangat membanggakan. Pertahankan!";
-      } else if (score >= 75) {
-        emoji = "🌟"; title = "Bagus Sekali!"; message = "Nilaimu sudah baik. Terus semangat!";
-      } else if (score >= 60) {
-        emoji = "👍"; title = "Cukup Baik!"; message = "Hampir sempurna! Pelajari lagi materi yang belum dikuasai.";
-      } else {
-        emoji = "💪"; title = "Semangat Terus!"; message = "Jangan menyerah. Ulangi latihan, kamu pasti bisa!";
-      }
+      if (score >= 90) { emoji = "🏆"; title = "Luar Biasa!"; message = "Hasil yang sangat membanggakan. Pertahankan!"; }
+      else if (score >= 75) { emoji = "🌟"; title = "Bagus Sekali!"; message = "Nilaimu sudah baik. Terus semangat!"; }
+      else if (score >= 60) { emoji = "👍"; title = "Cukup Baik!"; message = "Hampir sempurna! Pelajari lagi materi yang belum dikuasai."; }
+      else { emoji = "💪"; title = "Semangat Terus!"; message = "Jangan menyerah. Ulangi latihan, kamu pasti bisa!"; }
+
       document.getElementById("result-emoji").textContent = emoji;
       document.getElementById("result-title").textContent = title;
       document.getElementById("result-name").textContent = currentUserName;
@@ -690,16 +682,12 @@
       arc.style.strokeDasharray = circumference;
       arc.style.strokeDashoffset = circumference;
       switchLayer(layerResult, "flex");
-      requestAnimationFrame(() => {
-        arc.style.strokeDashoffset = circumference * (1 - score / 100);
-      });
+      requestAnimationFrame(() => { arc.style.strokeDashoffset = circumference * (1 - score / 100); });
     }
 
-    // Event listeners
     inputStudentId.addEventListener("input", () => {
       btnLogin.disabled = inputStudentId.value.trim() === "";
       loginError.style.display = "none";
-      inputStudentId.classList.remove("error");
     });
     btnLogin.addEventListener("click", handleLogin);
     btnChangeId.addEventListener("click", () => {
@@ -710,16 +698,25 @@
     btnStartQuiz.addEventListener("click", startNewQuiz);
     btnRetry.addEventListener("click", () => {
       stopTimer();
-      // Hapus sesi sebelum mulai baru
       sessionStorage.removeItem(`quizData_${currentUser}`);
       sessionStorage.removeItem(`quizAnswers_${currentUser}`);
       sessionStorage.removeItem(`timerEnd_${currentUser}`);
       startNewQuiz();
     });
+    btnEnd.addEventListener("click", () => {
+      sessionStorage.removeItem("activeQuizId");
+      sessionStorage.removeItem(`quizData_${currentUser}`);
+      sessionStorage.removeItem(`quizAnswers_${currentUser}`);
+      sessionStorage.removeItem(`timerEnd_${currentUser}`);
+      inputStudentId.value = "";
+      btnLogin.disabled = true;
+      loginError.style.display = "none";
+      switchLayer(layerLogin, "flex");
+    });
 
-    // Mulai fetch data saat halaman siap
     window.addEventListener("DOMContentLoaded", fetchInitialData);
   })();
 </script>
+
 </body>
 </html>
