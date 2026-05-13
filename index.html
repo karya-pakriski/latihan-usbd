@@ -188,14 +188,9 @@
     .option-label:active { transform: scale(.98); }
     .option-label input { position: absolute; opacity: 0; width: 0; height: 0; }
 
-    .option-bullet {
-      width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--slate-300); margin-right: 14px;
-      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
-      transition: border-color .2s, background .2s;
-    }
-    .option-bullet::after {
-      content: ''; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background .2s;
-    }
+    .option-bullet {width: 22px; height: 22px; border-radius: 50%; border: 2.5px solid var(--slate-500);   /* lebih gelap & sedikit lebih tebal */ margin-right: 14px;  flex-shrink: 0; display: flex; align-items: center; justify-content: center; transition: border-color .2s, background .2s;  background: white; }
+    .option-bullet::after {content: ''; width: 10px; height: 10px; border-radius: 50%; background: transparent; transition: background .2s; }
+
     .option-label.selected { border-color: var(--green-600); background: var(--green-50); color: var(--green-800); }
     .option-label.selected .option-bullet { border-color: var(--green-600); background: var(--green-600); }
     .option-label.selected .option-bullet::after { background: white; }
