@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Scheherazade+New:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* ─── DESIGN TOKENS ────────────────────────────────────────────────── */
     :root {
       --green-950: #052e16;
       --green-800: #166534;
@@ -39,7 +38,6 @@
       --shadow-card: 0 20px 60px -10px rgba(15,23,42,.15), 0 4px 16px -4px rgba(15,23,42,.1);
       --shadow-btn:  0 8px 20px -4px rgba(21,128,61,.35);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
@@ -47,25 +45,16 @@
       background: var(--slate-50);
       -webkit-font-smoothing: antialiased;
     }
-
     .layer { display: none !important; width: 100%; min-height: 100dvh; }
     .layer.active-flex  { display: flex  !important; flex-direction: column; align-items: center; justify-content: center; }
     .layer.active-block { display: block !important; padding-bottom: 30px; }
 
-    @keyframes cardIn {
-      from { opacity: 0; transform: translateY(24px) scale(.97); }
-      to   { opacity: 1; transform: none; }
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: none; }
-    }
+    @keyframes cardIn { from { opacity: 0; transform: translateY(24px) scale(.97); } to { opacity: 1; transform: none; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
     @keyframes spin  { to { transform: rotate(360deg); } }
     @keyframes pulse { 0%,100% { opacity:1; } 50% { opacity:.5; } }
 
-    /* ══════════════════════════════════════════════════════════════════════
-       LOGIN (gelap tetap)
-    ══════════════════════════════════════════════════════════════════════ */
+    /* ── LOGIN ─────────────────────────────────────────────────────────── */
     #layer-login {
       background-color: var(--green-950);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cdefs%3E%3Cpattern id='g' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg stroke='%23166534' stroke-width='0.8' fill='none'%3E%3Cpolygon points='40,4 52,28 76,28 58,44 64,68 40,56 16,68 22,44 4,28 28,28'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='80' height='80' fill='url(%23g)'/%3E%3C/svg%3E");
@@ -74,9 +63,7 @@
     #layer-login::before {
       content: ''; position: absolute; inset: 0;
       background: radial-gradient(ellipse 70% 55% at 50% 50%, rgba(22,163,74,.2) 0%, transparent 70%);
-      pointer-events: none;
     }
-
     .login-card {
       position: relative; z-index: 1; background: var(--cream); border-radius: 28px;
       box-shadow: var(--shadow-card); padding: 40px 28px 36px; width: 92%; max-width: 400px;
@@ -87,16 +74,14 @@
       background: var(--green-800); border-radius: var(--radius-xl) var(--radius-xl) 0 0;
       margin: -40px -28px 28px; padding: 13px 20px;
     }
-    .card-topbar svg  { width: 18px; height: 18px; fill: var(--green-200); flex-shrink: 0; }
+    .card-topbar svg { width: 18px; height: 18px; fill: var(--green-200); flex-shrink: 0; }
     .card-topbar span { font-size: 10.5px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; color: var(--green-100); }
-
     .login-emblem {
       width: 68px; height: 68px; border-radius: 50%; background: linear-gradient(135deg, var(--green-600), var(--green-800));
       display: flex; align-items: center; justify-content: center; margin: 0 auto 18px;
       box-shadow: 0 8px 24px rgba(22,163,74,.3); animation: cardIn .7s .1s cubic-bezier(.22,1,.36,1) both;
     }
     .login-emblem svg { width: 34px; height: 34px; fill: white; }
-
     .login-title { font-size: 19px; font-weight: 800; text-align: center; line-height: 1.25; letter-spacing: -.4px; animation: cardIn .7s .15s both; }
     .login-school { font-size: 13px; font-weight: 700; color: var(--green-700); text-align: center; margin-top: 4px; animation: cardIn .7s .2s both; }
     .login-quote {
@@ -104,11 +89,9 @@
       padding: 6px 14px; border-radius: 30px; font-size: 12px; font-weight: 700; font-style: italic;
       margin: 14px auto 26px; display: block; text-align: center; animation: cardIn .7s .25s both;
     }
-
     .divider { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; animation: cardIn .7s .3s both; }
     .divider::before, .divider::after { content: ''; flex: 1; height: 1px; background: var(--slate-200); }
     .divider span { font-size: 10.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--slate-500); }
-
     .input-wrapper { position: relative; margin-bottom: 18px; animation: cardIn .7s .35s both; }
     .input-wrapper label { display: block; font-size: 11px; font-weight: 700; color: var(--slate-500); text-transform: uppercase; letter-spacing: .8px; margin-bottom: 7px; }
     input[type="text"] {
@@ -117,10 +100,8 @@
       outline: none; transition: border-color .2s, box-shadow .2s; letter-spacing: 1px; text-transform: uppercase;
     }
     input[type="text"]:focus { border-color: var(--green-600); box-shadow: 0 0 0 3px rgba(22,163,74,.12); }
-
     .error-msg { color: var(--red-500); font-size: 12.5px; font-weight: 600; margin-top: 6px; display: none; }
 
-    /* ── Tombol universal ──────────────────────────────────────────────── */
     .btn {
       width: 100%; padding: 15px; border: none; border-radius: var(--radius-lg);
       font-family: inherit; font-size: 14.5px; font-weight: 800; cursor: pointer;
@@ -131,21 +112,16 @@
     .btn:not(:disabled):hover  { transform: translateY(-2px); }
     .btn:not(:disabled):active { transform: scale(.98); }
     .btn:disabled { opacity: .5; cursor: not-allowed; }
-
     .btn-primary { background: linear-gradient(135deg, var(--green-600), var(--green-800)); color: white; box-shadow: var(--shadow-btn); }
     .btn-outline { background: transparent; color: var(--slate-700); border: 2px solid var(--slate-300); box-shadow: none; }
     .btn-danger  { background: var(--red-500); color: white; box-shadow: 0 6px 16px -4px rgba(239,68,68,.35); }
-    .btn-ghost   { background: rgba(255,255,255,.12); color: white; border: 1.5px solid rgba(255,255,255,.2); box-shadow: none; }
 
-    /* ══════════════════════════════════════════════════════════════════════
-       GATEWAY – HIJAU SOLID, LEMBUT
-    ══════════════════════════════════════════════════════════════════════ */
+    /* ── GATEWAY (HIJAU SOLID) ─────────────────────────────────────────── */
     #layer-gateway {
-      background: #e9f5e9; /* hijau solid muda */
+      background: #e9f5e9;
       overflow-y: auto; -webkit-overflow-scrolling: touch; padding: 0 0 40px;
       align-items: stretch; justify-content: flex-start;
     }
-
     .gw-profile {
       display: flex; align-items: center; justify-content: space-between;
       padding: 20px 20px 0; animation: fadeUp .5s .05s both;
@@ -155,17 +131,14 @@
       width: 42px; height: 42px; border-radius: 50%;
       background: linear-gradient(135deg, var(--green-600), var(--green-800));
       display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 800; color: white;
-      border: 2px solid white; flex-shrink: 0;
+      font-size: 16px; font-weight: 800; color: white; border: 2px solid white; flex-shrink: 0;
     }
     .gw-user-name   { font-size: 14px; font-weight: 800; color: var(--slate-900); line-height: 1.2; }
     .gw-user-school { font-size: 11px; font-weight: 500; color: var(--slate-700); margin-top: 2px; }
     .gw-logout-btn {
-      display: flex; align-items: center; gap: 5px;
-      background: white; border: 1.5px solid var(--slate-200);
-      border-radius: 30px; padding: 6px 12px; cursor: pointer;
-      font-family: inherit; font-size: 11.5px; font-weight: 700; color: var(--slate-700);
-      transition: background .2s, color .2s;
+      display: flex; align-items: center; gap: 5px; background: white; border: 1.5px solid var(--slate-200);
+      border-radius: 30px; padding: 6px 12px; cursor: pointer; font-family: inherit;
+      font-size: 11.5px; font-weight: 700; color: var(--slate-700); transition: background .2s;
     }
     .gw-logout-btn:hover { background: var(--slate-100); }
     .gw-logout-btn svg { width: 14px; height: 14px; fill: currentColor; }
@@ -180,7 +153,6 @@
     .gw-sub   { font-size: 13px; color: var(--slate-700); margin-top: 6px; font-weight: 500; }
 
     .materi-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 16px 20px 0; }
-
     .materi-card {
       background: white; border: 2px solid var(--green-200); border-radius: 18px;
       padding: 18px 14px 16px; cursor: pointer; text-align: center;
@@ -198,8 +170,8 @@
     .materi-card-name { font-size: 13px; font-weight: 800; color: var(--slate-900); line-height: 1.3; }
     .materi-card-count {
       display: inline-flex; align-items: center; gap: 4px; margin-top: 8px;
-      background: var(--green-100); color: var(--green-800);
-      padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700;
+      background: var(--green-100); color: var(--green-800); padding: 3px 10px;
+      border-radius: 20px; font-size: 11px; font-weight: 700;
     }
     .materi-card-count svg { width: 10px; height: 10px; fill: currentColor; }
     .materi-card.empty { opacity: .5; cursor: not-allowed; pointer-events: none; }
@@ -213,8 +185,8 @@
 
     .materi-card.semua {
       grid-column: 1 / -1; display: flex; align-items: center; gap: 14px; text-align: left;
-      background: linear-gradient(135deg, var(--green-50), white);
-      border-color: var(--green-600); padding: 18px 20px; animation-delay: .34s;
+      background: linear-gradient(135deg, var(--green-50), white); border-color: var(--green-600);
+      padding: 18px 20px; animation-delay: .34s;
     }
     .materi-card.semua::before { background: var(--gold); }
     .materi-card.semua .materi-card-icon { font-size: 28px; margin-bottom: 0; flex-shrink: 0; }
@@ -227,9 +199,7 @@
     }
     .materi-card-arrow svg { width: 16px; height: 16px; fill: var(--green-800); }
 
-    /* ══════════════════════════════════════════════════════════════════════
-       QUIZ & RESULT (tidak berubah drastis)
-    ══════════════════════════════════════════════════════════════════════ */
+    /* ── QUIZ ──────────────────────────────────────────────────────────── */
     .glass-header {
       position: sticky; top: 0; z-index: 100; padding: 12px 16px;
       display: flex; justify-content: space-between; align-items: center;
@@ -240,7 +210,6 @@
     .header-brand { display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 13.5px; color: var(--green-700); }
     .header-brand svg { width: 18px; height: 18px; fill: var(--green-600); }
     .header-right { display: flex; align-items: center; gap: 8px; }
-
     .header-materi-badge {
       padding: 4px 10px; border-radius: 20px; font-size: 11px; font-weight: 800;
       letter-spacing: .3px; background: var(--mbg, var(--green-100)); color: var(--mc, var(--green-800));
@@ -248,28 +217,24 @@
     .progress-pill { background: var(--slate-900); color: white; padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 700; }
     .timer-pill { background: var(--green-100); color: var(--green-800); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 800; display: none; }
     .timer-pill.danger { background: var(--red-50); color: var(--red-500); animation: pulse 1s infinite; }
-
     .header-exit-btn {
       display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
-      border-radius: 50%; background: var(--slate-100); border: none; cursor: pointer; transition: background .2s;
+      border-radius: 50%; background: var(--slate-100); border: none; cursor: pointer;
     }
     .header-exit-btn:hover { background: var(--red-50); }
     .header-exit-btn:hover svg { fill: var(--red-500); }
-    .header-exit-btn svg { width: 16px; height: 16px; fill: var(--slate-500); transition: fill .2s; }
+    .header-exit-btn svg { width: 16px; height: 16px; fill: var(--slate-500); }
 
     .quiz-container { max-width: 620px; margin: 0 auto; padding: 20px 16px; }
-
     .question-card {
       background: var(--white); border-radius: var(--radius-xl); padding: 20px 18px; margin-bottom: 16px;
-      border: 2px solid transparent; box-shadow: 0 2px 8px rgba(0,0,0,.05); transition: border-color .2s;
+      border: 2px solid transparent; box-shadow: 0 2px 8px rgba(0,0,0,.05);
     }
-    .question-card.missed { border-color: var(--red-500); background: var(--red-50); box-shadow: 0 0 0 4px rgba(239,68,68,.07); }
-
+    .question-card.missed { border-color: var(--red-500); background: var(--red-50); }
     .q-number { display: inline-block; font-size: 10.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; color: var(--mc, var(--green-700)); background: var(--mbg, var(--green-100)); padding: 3px 10px; border-radius: 20px; margin-bottom: 12px; }
     .q-text { font-size: 15px; color: var(--slate-900); line-height: 1.75; margin-bottom: 16px; }
     .q-text ol { padding-left: 20px; margin: 8px 0; }
     .q-text li { margin-bottom: 5px; line-height: 1.6; }
-
     .arabic { direction: rtl; text-align: right; font-family: 'Scheherazade New', serif; font-size: 30px; line-height: 2.2; margin: 12px 0; padding: 12px 16px; background: var(--green-50); border-right: 4px solid var(--green-600); border-radius: 10px 0 0 10px; }
     .context-box { background: #fffbeb; border-left: 4px solid #f59e0b; padding: 12px 14px; margin: 12px 0; font-size: 14px; color: #451a03; line-height: 1.65; border-radius: 0 10px 10px 0; }
     table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; margin: 12px 0; font-size: 14px; border: 1px solid var(--slate-200); }
@@ -300,15 +265,14 @@
       font-family: 'Scheherazade New', 'Traditional Arabic', 'Noto Naskh Arabic', 'Amiri', serif;
       font-size: 24px; line-height: 1.4; direction: rtl; unicode-bidi: isolate; display: inline-block;
     }
-
     .static-action { max-width: 620px; margin: 24px auto 0; padding: 0 16px 40px; }
 
+    /* ── RESULT ────────────────────────────────────────────────────────── */
     #layer-result {
       background: linear-gradient(160deg, var(--green-950) 0%, #0a3320 100%);
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cdefs%3E%3Cpattern id='g' x='0' y='0' width='80' height='80' patternUnits='userSpaceOnUse'%3E%3Cg stroke='%23166534' stroke-width='0.8' fill='none'%3E%3Cpolygon points='40,4 52,28 76,28 58,44 64,68 40,56 16,68 22,44 4,28 28,28'/%3E%3Crect x='22' y='22' width='36' height='36' transform='rotate(45 40 40)'/%3E%3C/g%3E%3C/pattern%3E%3C/defs%3E%3Crect width='80' height='80' fill='url(%23g)'/%3E%3C/svg%3E");
-      overflow-y: auto; -webkit-overflow-scrolling: touch;
+      overflow-y: auto;
     }
-
     .result-card {
       background: var(--cream); border-radius: 28px; box-shadow: var(--shadow-card);
       padding: 40px 26px 32px; width: 92%; max-width: 380px; text-align: center;
@@ -322,7 +286,6 @@
     .result-emoji { font-size: 44px; margin-bottom: 14px; display: block; }
     .result-title { font-size: 20px; font-weight: 900; color: var(--slate-900); margin-bottom: 4px; }
     .result-name  { font-size: 13px; font-weight: 600; color: var(--slate-500); margin-bottom: 26px; }
-
     .score-ring { position: relative; width: 140px; height: 140px; margin: 0 auto 22px; }
     .score-ring svg { position: absolute; top: 0; left: 0; transform: rotate(-90deg); }
     .score-ring-bg   { fill: none; stroke: var(--green-100); stroke-width: 10; }
@@ -330,21 +293,18 @@
     .score-number { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
     .score-value { font-size: 44px; font-weight: 900; color: var(--green-700); line-height: 1; letter-spacing: -2px; }
     .score-label { font-size: 11px; font-weight: 700; color: var(--slate-500); text-transform: uppercase; letter-spacing: .8px; }
-
     .stat-row { display: flex; justify-content: center; gap: 10px; margin-bottom: 22px; }
     .stat-item { background: var(--slate-50); border: 1px solid var(--slate-200); border-radius: var(--radius-md); padding: 10px 16px; text-align: center; flex: 1; }
     .stat-item .num { font-size: 22px; font-weight: 900; color: var(--slate-900); }
     .stat-item .lbl { font-size: 10.5px; font-weight: 700; color: var(--slate-500); text-transform: uppercase; letter-spacing: .5px; }
     .stat-item.correct .num { color: var(--green-700); }
     .stat-item.attempt-info .num { color: var(--gold); }
-
     .result-message { font-size: 13.5px; color: var(--slate-500); margin-bottom: 22px; line-height: 1.6; }
     .result-actions { display: flex; flex-direction: column; gap: 10px; }
 
     #loading-overlay {
-      position: fixed; inset: 0; background: rgba(255,255,255,.92);
-      backdrop-filter: blur(8px); display: none; flex-direction: column;
-      align-items: center; justify-content: center; z-index: 9999;
+      position: fixed; inset: 0; background: rgba(255,255,255,.92); backdrop-filter: blur(8px);
+      display: none; flex-direction: column; align-items: center; justify-content: center; z-index: 9999;
     }
     .loader-ring { width: 48px; height: 48px; border: 5px solid var(--green-100); border-top-color: var(--green-600); border-radius: 50%; animation: spin 1s linear infinite; }
     .loading-text { margin-top: 14px; font-size: 14px; font-weight: 700; color: var(--green-700); }
@@ -366,8 +326,6 @@
   </style>
 </head>
 <body>
-
-<!-- ═══ LAYER LOGIN ═══ -->
 <div id="layer-login" class="layer active-flex">
   <div class="login-card">
     <div class="card-topbar">
@@ -392,7 +350,6 @@
   </div>
 </div>
 
-<!-- ═══ LAYER GATEWAY (HIJAU SOLID) ═══ -->
 <div id="layer-gateway" class="layer">
   <div class="gw-profile">
     <div class="gw-profile-left">
@@ -415,7 +372,6 @@
   <div class="materi-grid" id="materi-grid"></div>
 </div>
 
-<!-- ═══ LAYER QUIZ ═══ -->
 <div id="layer-quiz" class="layer">
   <div class="glass-header">
     <div class="header-brand">
@@ -440,7 +396,6 @@
   </div>
 </div>
 
-<!-- ═══ LAYER RESULT ═══ -->
 <div id="layer-result" class="layer">
   <div class="result-card">
     <div class="result-materi-chip" id="result-materi-chip">–</div>
@@ -480,19 +435,17 @@
   </div>
 </div>
 
-<!-- ═══ OVERLAY ═══ -->
 <div id="loading-overlay">
   <div class="loader-ring"></div>
   <div class="loading-text" id="loading-text">Menyinkronkan data...</div>
   <div class="loading-sub" id="loading-sub"></div>
 </div>
 
-<!-- ═══ DIALOG KELUAR ═══ -->
 <div id="exit-dialog">
   <div class="exit-dialog-box">
     <div class="exit-dialog-icon">⚠️</div>
     <h3 class="exit-dialog-title">Yakin ingin keluar?</h3>
-    <p class="exit-dialog-sub">Jawabanmu yang sudah diisi akan tersimpan sementara. Tapi kalau kamu ganti materi, sesi ini akan dihapus.</p>
+    <p class="exit-dialog-sub">Jawabanmu akan tersimpan sementara. Ganti materi akan menghapus sesi ini.</p>
     <div class="exit-dialog-btns">
       <button id="btn-exit-cancel" class="btn btn-outline" style="animation:none;">Batal</button>
       <button id="btn-exit-confirm" class="btn btn-danger" style="animation:none;">Ya, Keluar</button>
@@ -503,7 +456,6 @@
 <script>
 (function() {
   const GAS_URL = "https://script.google.com/macros/s/AKfycbwpxde727mzPIU9_AlYs-uS0MBBFKwDmML7YKLk0N7qj1td7x0yX-Z6C1OzFOjAW3r_bA/exec";
-
   const MATERI_LIST = [
     { kode: "A", nama: "Al-Qur'an Hadis",       emoji: "📖", color: "#059669", bg: "#d1fae5" },
     { kode: "B", nama: "Akidah",                  emoji: "⭐", color: "#7c3aed", bg: "#ede9fe" },
@@ -514,11 +466,11 @@
 
   let globalQuestions  = [];
   let globalStudents   = [];
-  let globalSettings   = {};   // berisi Waktu_Menit, Jumlah_A, Jumlah_B, ...
+  let globalSettings   = {};
   let currentId        = "";
   let currentName      = "";
   let currentSchool    = "";
-  let currentMateri    = "";       // "A","B",...,"SEMUA"
+  let currentMateri    = "";
   let currentMateriDef = null;
   let timerInterval    = null;
   let timerBaseSeconds = 0;
@@ -531,417 +483,245 @@
   const layerResult  = document.getElementById("layer-result");
 
   function switchLayer(layer, type) {
-    [layerLogin, layerGateway, layerQuiz, layerResult].forEach(l =>
-      l.classList.remove("active-flex", "active-block")
-    );
+    [layerLogin, layerGateway, layerQuiz, layerResult].forEach(l => l.classList.remove("active-flex","active-block"));
     layer.classList.add(`active-${type}`);
     window.scrollTo({ top: 0 });
   }
-
-  function showLoading(t, s) {
-    document.getElementById("loading-text").textContent = t || "Memproses...";
-    document.getElementById("loading-sub").textContent  = s || "";
+  function showLoading(t,s) {
+    document.getElementById("loading-text").textContent = t||"";
+    document.getElementById("loading-sub").textContent  = s||"";
     document.getElementById("loading-overlay").style.display = "flex";
   }
   function hideLoading() { document.getElementById("loading-overlay").style.display = "none"; }
-
-  function applyMateriTheme(color, bg) {
-    document.documentElement.style.setProperty("--mc",  color);
+  function applyMateriTheme(color,bg) {
+    document.documentElement.style.setProperty("--mc", color);
     document.documentElement.style.setProperty("--mbg", bg);
   }
-
-  // ═══ 1. FETCH DATA ═══
-  async function fetchInitialData() {
-    showLoading("Mengambil paket soal...", "Harap tunggu sebentar");
-    try {
-      const r = await fetch(GAS_URL);
-      if (!r.ok) throw new Error("HTTP " + r.status);
-      const data = await r.json();
-      globalQuestions  = data.questions || [];
-      globalStudents   = data.students  || [];
-      globalSettings   = data.settings  || {};
-      timerBaseSeconds = parseInt(globalSettings.Waktu_Menit || 0, 10) * 60;
-      hideLoading();
-
-      const savedId = sessionStorage.getItem("activeQuizId");
-      if (savedId && globalStudents.some(s => s.id === savedId)) {
-        const savedQuiz    = sessionStorage.getItem(`quizData_${savedId}`);
-        const savedAnswers = sessionStorage.getItem(`quizAnswers_${savedId}`);
-        const savedMateri  = sessionStorage.getItem(`quizMateri_${savedId}`);
-        if (savedQuiz && savedAnswers && savedMateri) {
-          const stu = globalStudents.find(s => s.id === savedId);
-          currentId     = savedId;
-          currentName   = stu.nama;
-          currentSchool = stu.sekolah;
-          currentMateri = savedMateri;
-          currentMateriDef = savedMateri === "SEMUA"
-            ? { kode:"SEMUA", nama:"Semua Materi", emoji:"🎯", color:"#0f172a", bg:"#f1f5f9" }
-            : MATERI_LIST.find(m => m.kode === savedMateri);
-          quizData    = JSON.parse(savedQuiz);
-          userAnswers = JSON.parse(savedAnswers);
-          applyMateriTheme(currentMateriDef.color, currentMateriDef.bg);
-          renderQuizFromData();
-          return;
-        }
-      }
-      switchLayer(layerLogin, "flex");
-    } catch (e) {
-      hideLoading();
-      alert("Gagal memuat data. Periksa koneksi internet.");
-    }
-  }
-
-  // ═══ 2. LOGIN ═══
-  const inputId  = document.getElementById("student-id");
-  const btnLogin = document.getElementById("btn-login");
-  const loginErr = document.getElementById("login-error");
-
-  inputId.addEventListener("input", () => {
-    btnLogin.disabled = inputId.value.trim() === "";
-    loginErr.style.display = "none";
-  });
-  inputId.addEventListener("keydown", e => {
-    if (e.key === "Enter" && !btnLogin.disabled) handleLogin();
-  });
-  btnLogin.addEventListener("click", handleLogin);
-
-  function handleLogin() {
-    const id  = inputId.value.trim().toUpperCase();
-    const stu = globalStudents.find(s => s.id === id);
-    if (!stu) { loginErr.style.display = "block"; return; }
-    loginErr.style.display = "none";
-    currentId     = stu.id;
-    currentName   = stu.nama;
-    currentSchool = stu.sekolah;
-    openGateway();
-  }
-
-  // ═══ 3. GATEWAY DENGAN JUMLAH SOAL DARI PENGATURAN ═══
-  function openGateway() {
-    const counts = {}; // total tersedia
-    globalQuestions.forEach(q => {
-      const prefix = String(q.Nomor || "").split("-")[0].trim().toUpperCase();
-      counts[prefix] = (counts[prefix] || 0) + 1;
-    });
-
-    // Fungsi ambil batas soal dari settings (Jumlah_<kode>)
-    function getLimit(kode) {
-      const key = `Jumlah_${kode}`;
-      const val = globalSettings[key];
-      if (val !== undefined && !isNaN(parseInt(val))) {
-        return Math.max(1, parseInt(val)); // minimal 1
-      }
-      return null; // tidak dibatasi (pakai semua)
-    }
-
-    document.getElementById("gw-avatar").textContent     = currentName.charAt(0).toUpperCase();
-    document.getElementById("gw-user-name").textContent  = currentName;
-    document.getElementById("gw-user-school").textContent = currentSchool;
-
-    const grid = document.getElementById("materi-grid");
-    grid.innerHTML = "";
-
-    MATERI_LIST.forEach(m => {
-      const totalTersedia = counts[m.kode] || 0;
-      const limit         = getLimit(m.kode);
-      const effective     = limit !== null ? Math.min(limit, totalTersedia) : totalTersedia;
-      const isEmpty       = effective === 0;
-
-      const card = document.createElement("div");
-      card.className = "materi-card" + (isEmpty ? " empty" : "");
-      card.style.setProperty("--mc", m.color);
-      card.innerHTML = `
-        <span class="materi-card-icon">${m.emoji}</span>
-        <div class="materi-card-name">${m.nama}</div>
-        <div class="materi-card-count">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>
-          ${isEmpty ? "Tidak tersedia" : effective + " soal"}
-        </div>`;
-      if (!isEmpty) {
-        card.addEventListener("click", () => startQuiz(m.kode, m, limit));
-      }
-      grid.appendChild(card);
-    });
-
-    // Semua Materi
-    const limitSemua = getLimit("SEMUA");
-    const totalSemua = globalQuestions.length;
-    const effectiveSemua = limitSemua !== null ? Math.min(limitSemua, totalSemua) : totalSemua;
-
-    const cardSemua = document.createElement("div");
-    cardSemua.className = "materi-card semua";
-    cardSemua.style.setProperty("--mc", "#d97706");
-    cardSemua.innerHTML = `
-      <span class="materi-card-icon">🎯</span>
-      <div class="materi-card-body">
-        <div class="materi-card-name">Semua Materi</div>
-        <div class="semua-sub">Gabungan ${effectiveSemua} soal dari semua bab</div>
-      </div>
-      <div class="materi-card-arrow">
-        <svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg>
-      </div>`;
-    cardSemua.addEventListener("click", () => startQuiz("SEMUA", {
-      kode:"SEMUA", nama:"Semua Materi", emoji:"🎯", color:"#0f172a", bg:"#f1f5f9"
-    }, limitSemua));
-    grid.appendChild(cardSemua);
-
-    switchLayer(layerGateway, "flex");
-  }
-
-  document.getElementById("btn-gw-logout").addEventListener("click", () => {
-    clearSession();
-    inputId.value = "";
-    btnLogin.disabled = true;
-    loginErr.style.display = "none";
-    switchLayer(layerLogin, "flex");
-  });
-
-  // ═══ 4. MULAI QUIZ (batasi jumlah soal) ═══
-  function startQuiz(kodeMat, materiDef, limit) {
-    clearSession();
-    currentMateri    = kodeMat;
-    currentMateriDef = materiDef;
-    applyMateriTheme(materiDef.color, materiDef.bg);
-
-    let pool = kodeMat === "SEMUA"
-      ? [...globalQuestions]
-      : globalQuestions.filter(q =>
-          String(q.Nomor || "").split("-")[0].trim().toUpperCase() === kodeMat
-        );
-
-    if (pool.length === 0) {
-      alert(`Belum ada soal untuk materi "${materiDef.nama}".`);
-      return;
-    }
-
-    // Acak lalu batasi jumlah
-    pool = shuffleArray(pool);
-    if (limit !== null) {
-      pool = pool.slice(0, limit);
-    }
-
-    quizData = pool.map(q => ({
-      ...q,
-      shuffledOpts: shuffleArray([
-        { key: "A", text: q.Opsi_A },
-        { key: "B", text: q.Opsi_B },
-        { key: "C", text: q.Opsi_C },
-        { key: "D", text: q.Opsi_D }
-      ])
-    }));
-    userAnswers = {};
-
-    sessionStorage.setItem("activeQuizId",             currentId);
-    sessionStorage.setItem(`quizData_${currentId}`,    JSON.stringify(quizData));
-    sessionStorage.setItem(`quizAnswers_${currentId}`, JSON.stringify(userAnswers));
-    sessionStorage.setItem(`quizMateri_${currentId}`,  kodeMat);
-
-    renderQuizFromData();
-  }
-
-  // ═══ 5. RENDER SOAL ═══
-  function renderQuizFromData() {
-    const container = document.getElementById("quiz-container");
-    container.innerHTML = "";
-
-    const badge = document.getElementById("quiz-materi-badge");
-    badge.textContent = currentMateriDef
-      ? (currentMateriDef.emoji + " " + currentMateriDef.nama)
-      : "";
-    badge.style.setProperty("--mc",  currentMateriDef?.color || "var(--green-800)");
-    badge.style.setProperty("--mbg", currentMateriDef?.bg    || "var(--green-100)");
-
-    let answeredCount = 0;
-
-    quizData.forEach((q, index) => {
-      const card = document.createElement("div");
-      card.className  = "question-card";
-      card.dataset.id = q.id;
-
-      const selectedKey = userAnswers[q.id] || "";
-      if (selectedKey) answeredCount++;
-
-      const optsHtml = q.shuffledOpts.map(opt => {
-        const sel = selectedKey === opt.key;
-        const txtFmt = opt.text.replace(
-          /([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+(?:\s+[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+)*)/g,
-          '<span class="arabic-opt">$1</span>'
-        );
-        return `
-          <label class="option-label${sel ? " selected" : ""}">
-            <input type="radio" name="q_${q.id}" value="${opt.key}"${sel ? " checked" : ""}>
-            <div class="option-bullet"></div>
-            <span>${txtFmt}</span>
-          </label>`;
-      }).join("");
-
-      card.innerHTML = `
-        <div class="q-number">Soal ${index + 1}</div>
-        <div class="q-text">${q.Pertanyaan_HTML}</div>
-        <div class="options-grid">${optsHtml}</div>`;
-      container.appendChild(card);
-    });
-
-    updateProgress(answeredCount);
-
-    container.querySelectorAll('.option-label input[type="radio"]').forEach(radio => {
-      radio.addEventListener("change", function() {
-        const card = this.closest(".question-card");
-        card.classList.remove("missed");
-        card.querySelectorAll(".option-label").forEach(l => l.classList.remove("selected"));
-        this.closest(".option-label").classList.add("selected");
-        userAnswers[card.dataset.id] = this.value;
-        sessionStorage.setItem(`quizAnswers_${currentId}`, JSON.stringify(userAnswers));
-        updateProgress();
-      });
-    });
-
-    if (timerBaseSeconds > 0) startTimer();
-    document.getElementById("btn-submit").onclick = submitQuiz;
-    switchLayer(layerQuiz, "block");
-  }
-
-  function updateProgress(count) {
-    const total    = quizData.length;
-    const answered = count !== undefined ? count : Object.keys(userAnswers).length;
-    document.getElementById("progress-text").textContent = `${answered}/${total}`;
-  }
-
-  // ═══ TIMER ═══
-  function startTimer() {
-    const pill = document.getElementById("timer-pill");
-    pill.style.display = "flex";
-    let endTime = sessionStorage.getItem(`timerEnd_${currentId}`);
-    if (!endTime) {
-      endTime = Date.now() + timerBaseSeconds * 1000;
-      sessionStorage.setItem(`timerEnd_${currentId}`, endTime);
-    } else {
-      endTime = parseInt(endTime, 10);
-    }
-    function tick() {
-      let rem = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
-      pill.textContent = `⏱ ${String(Math.floor(rem/60)).padStart(2,"0")}:${String(rem%60).padStart(2,"0")}`;
-      if (rem <= 60) pill.classList.add("danger");
-      if (rem <= 0) { stopTimer(); alert("Waktu habis!"); executeSubmit(); return; }
-      timerInterval = setTimeout(tick, 1000);
-    }
-    tick();
-  }
-  function stopTimer() {
-    if (timerInterval) { clearTimeout(timerInterval); timerInterval = null; }
-    document.getElementById("timer-pill").style.display = "none";
-  }
-
-  // ═══ SUBMIT ═══
-  function submitQuiz() {
-    let firstMissed = null;
-    document.querySelectorAll(".question-card").forEach(card => {
-      if (!card.querySelector('input[type="radio"]:checked')) {
-        card.classList.add("missed");
-        if (!firstMissed) firstMissed = card;
-      }
-    });
-    if (firstMissed) { firstMissed.scrollIntoView({ behavior:"smooth", block:"center" }); return; }
-    stopTimer();
-    executeSubmit();
-  }
-
-  async function executeSubmit() {
-    showLoading("Mengoreksi...", "Koneksi ke server");
-    const answers = {};
-    document.querySelectorAll(".question-card").forEach(card => {
-      const checked = card.querySelector('input[type="radio"]:checked');
-      if (checked) answers[card.dataset.id] = checked.value;
-    });
-    const payload = { name: currentId, materi: currentMateri, answers };
-    try {
-      const r = await fetch(GAS_URL, { method:"POST", body:JSON.stringify(payload) });
-      const data = await r.json();
-      hideLoading();
-      if (data.status === "success") { clearSession(); showResult(data); }
-      else alert("Kesalahan: " + (data.message || ""));
-    } catch (e) {
-      hideLoading();
-      alert("Gagal mengirim. Cek koneksi.");
-    }
-  }
-
-  // ═══ HASIL ═══
-  function showResult(data) {
-    const score = Math.round(data.score);
-    const mDef = MATERI_LIST.find(m => m.kode === data.materi) || {
-      kode:"SEMUA", nama:"Semua Materi", emoji:"🎯", color:"#0f172a", bg:"#f1f5f9"
-    };
-    const chip = document.getElementById("result-materi-chip");
-    chip.textContent = mDef.emoji + " " + mDef.nama;
-    chip.style.setProperty("--mc", mDef.color); chip.style.setProperty("--mbg", mDef.bg);
-
-    let emoji, title, msg;
-    if (score >= 90)      { emoji="🏆"; title="Luar Biasa!"; msg="Hasil sangat membanggakan."; }
-    else if (score >= 75) { emoji="🌟"; title="Bagus Sekali!"; msg="Nilaimu sudah baik."; }
-    else if (score >= 60) { emoji="👍"; title="Cukup Baik!"; msg="Hampir sempurna."; }
-    else                  { emoji="💪"; title="Semangat!"; msg="Jangan menyerah."; }
-
-    document.getElementById("result-emoji").textContent = emoji;
-    document.getElementById("result-title").textContent = title;
-    document.getElementById("result-name").textContent = currentName;
-    document.getElementById("final-score").textContent = score;
-    document.getElementById("correct-count").textContent = data.correct;
-    document.getElementById("total-count").textContent = data.total;
-    document.getElementById("attempt-count").textContent = data.attempt;
-    document.getElementById("result-message").textContent = msg;
-
-    const circ = 2 * Math.PI * 60;
-    const arc  = document.getElementById("score-arc");
-    arc.style.strokeDasharray = circ;
-    arc.style.strokeDashoffset = circ;
-    switchLayer(layerResult, "flex");
-    requestAnimationFrame(() => {
-      arc.style.stroke = mDef.color;
-      arc.style.strokeDashoffset = circ * (1 - score / 100);
-    });
-  }
-
-  // ═══ TOMBOL HASIL ═══
-  document.getElementById("btn-retry").addEventListener("click", () => {
-    stopTimer(); clearSession();
-    const limitKey = `Jumlah_${currentMateri}`;
-    const limit = globalSettings[limitKey] ? parseInt(globalSettings[limitKey]) : null;
-    startQuiz(currentMateri, currentMateriDef, limit);
-  });
-  document.getElementById("btn-change-materi").addEventListener("click", () => {
-    stopTimer(); clearSession(); openGateway();
-  });
-  document.getElementById("btn-end").addEventListener("click", () => {
-    stopTimer(); clearSession();
-    currentId = ""; currentName = ""; currentSchool = "";
-    inputId.value = ""; btnLogin.disabled = true;
-    loginErr.style.display = "none";
-    switchLayer(layerLogin, "flex");
-  });
-
-  // ═══ DIALOG KELUAR ═══
-  document.getElementById("btn-quiz-exit").addEventListener("click", () => {
-    document.getElementById("exit-dialog").style.display = "flex";
-  });
-  document.getElementById("btn-exit-cancel").addEventListener("click", () => {
-    document.getElementById("exit-dialog").style.display = "none";
-  });
-  document.getElementById("btn-exit-confirm").addEventListener("click", () => {
-    document.getElementById("exit-dialog").style.display = "none";
-    stopTimer(); clearSession(); openGateway();
-  });
-
   function shuffleArray(arr) {
     const a = [...arr];
-    for (let i = a.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [a[i], a[j]] = [a[j], a[i]];
-    }
+    for (let i=a.length-1; i>0; i--) { const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; }
     return a;
   }
 
-  function clearSession() {
+  async function fetchInitialData() {
+    showLoading("Mengambil paket soal...");
+    try {
+      const r = await fetch(GAS_URL);
+      const data = await r.json();
+      globalQuestions = data.questions || [];
+      globalStudents  = data.students  || [];
+      globalSettings  = data.settings  || {};
+      timerBaseSeconds = parseInt(globalSettings.Waktu_Menit||0,10)*60;
+      hideLoading();
+      const savedId = sessionStorage.getItem("activeQuizId");
+      if (savedId && globalStudents.some(s=>s.id===savedId)) {
+        const sq = sessionStorage.getItem(`quizData_${savedId}`);
+        const sa = sessionStorage.getItem(`quizAnswers_${savedId}`);
+        const sm = sessionStorage.getItem(`quizMateri_${savedId}`);
+        if (sq && sa && sm) {
+          const stu = globalStudents.find(s=>s.id===savedId);
+          currentId=savedId; currentName=stu.nama; currentSchool=stu.sekolah; currentMateri=sm;
+          currentMateriDef = sm==="SEMUA"? {kode:"SEMUA",nama:"Semua Materi",emoji:"🎯",color:"#0f172a",bg:"#f1f5f9"} : MATERI_LIST.find(m=>m.kode===sm);
+          quizData=JSON.parse(sq); userAnswers=JSON.parse(sa);
+          applyMateriTheme(currentMateriDef.color, currentMateriDef.bg);
+          renderQuizFromData(); return;
+        }
+      }
+      switchLayer(layerLogin,"flex");
+    } catch(e) { hideLoading(); alert("Gagal memuat data."); }
+  }
+
+  const inputId=document.getElementById("student-id"), btnLogin=document.getElementById("btn-login"), loginErr=document.getElementById("login-error");
+  inputId.addEventListener("input",()=>{ btnLogin.disabled = inputId.value.trim()===""; loginErr.style.display="none"; });
+  inputId.addEventListener("keydown",e=>{ if(e.key==="Enter"&&!btnLogin.disabled) handleLogin(); });
+  btnLogin.addEventListener("click",handleLogin);
+
+  function handleLogin() {
+    const id=inputId.value.trim().toUpperCase();
+    const stu=globalStudents.find(s=>s.id===id);
+    if(!stu){ loginErr.style.display="block"; return; }
+    loginErr.style.display="none";
+    currentId=stu.id; currentName=stu.nama; currentSchool=stu.sekolah;
+    openGateway();
+  }
+
+  function openGateway() {
+    const counts={};
+    globalQuestions.forEach(q=>{ const p=String(q.Nomor||"").split("-")[0].trim().toUpperCase(); counts[p]=(counts[p]||0)+1; });
+    const getLimit = kode => {
+      const key=`Jumlah_${kode}`; const v=globalSettings[key];
+      return (v!==undefined && !isNaN(parseInt(v))) ? Math.max(1,parseInt(v)) : null;
+    };
+
+    document.getElementById("gw-avatar").textContent=currentName.charAt(0).toUpperCase();
+    document.getElementById("gw-user-name").textContent=currentName;
+    document.getElementById("gw-user-school").textContent=currentSchool;
+
+    const grid=document.getElementById("materi-grid"); grid.innerHTML="";
+
+    MATERI_LIST.forEach(m=>{
+      const total=counts[m.kode]||0, limit=getLimit(m.kode), effective=limit!==null?Math.min(limit,total):total, empty=effective===0;
+      let countStr="";
+      if(empty) countStr="Belum ada soal";
+      else if(limit!==null && total>limit) countStr=`${effective} / ${total} soal`;
+      else countStr=`${effective} soal`;
+
+      const card=document.createElement("div");
+      card.className="materi-card"+(empty?" empty":"");
+      card.style.setProperty("--mc",m.color);
+      card.innerHTML=`<span class="materi-card-icon">${m.emoji}</span><div class="materi-card-name">${m.nama}</div><div class="materi-card-count"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6zm4 18H6V4h7v5h5v11z"/></svg>${countStr}</div>`;
+      if(!empty) card.addEventListener("click",()=>startQuiz(m.kode,m,limit));
+      grid.appendChild(card);
+    });
+
+    const limitSemua=getLimit("SEMUA"), totalSemua=globalQuestions.length, effSemua=limitSemua!==null?Math.min(limitSemua,totalSemua):totalSemua;
+    let semuaStr="";
+    if(limitSemua!==null && totalSemua>limitSemua) semuaStr=`${effSemua} / ${totalSemua} soal`;
+    else semuaStr=`${effSemua} soal`;
+
+    const cardSemua=document.createElement("div");
+    cardSemua.className="materi-card semua"; cardSemua.style.setProperty("--mc","#d97706");
+    cardSemua.innerHTML=`<span class="materi-card-icon">🎯</span><div class="materi-card-body"><div class="materi-card-name">Semua Materi</div><div class="semua-sub">Gabungan ${semuaStr} dari semua bab</div></div><div class="materi-card-arrow"><svg viewBox="0 0 24 24"><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></div>`;
+    cardSemua.addEventListener("click",()=>startQuiz("SEMUA",{kode:"SEMUA",nama:"Semua Materi",emoji:"🎯",color:"#0f172a",bg:"#f1f5f9"},limitSemua));
+    grid.appendChild(cardSemua);
+
+    switchLayer(layerGateway,"flex");
+  }
+
+  document.getElementById("btn-gw-logout").addEventListener("click",()=>{
+    clearSession(); inputId.value=""; btnLogin.disabled=true; loginErr.style.display="none"; switchLayer(layerLogin,"flex");
+  });
+
+  function startQuiz(kodeMat, materiDef, limit) {
+    clearSession(); currentMateri=kodeMat; currentMateriDef=materiDef; applyMateriTheme(materiDef.color,materiDef.bg);
+    let pool = kodeMat==="SEMUA"? [...globalQuestions] : globalQuestions.filter(q=>String(q.Nomor||"").split("-")[0].trim().toUpperCase()===kodeMat);
+    if(pool.length===0){ alert(`Belum ada soal untuk "${materiDef.nama}".`); return; }
+    pool = shuffleArray(pool);
+    if(limit!==null) pool = pool.slice(0,limit);
+    quizData = pool.map(q=>({...q, shuffledOpts: shuffleArray([{key:"A",text:q.Opsi_A},{key:"B",text:q.Opsi_B},{key:"C",text:q.Opsi_C},{key:"D",text:q.Opsi_D}]) }));
+    userAnswers = {};
+    sessionStorage.setItem("activeQuizId", currentId);
+    sessionStorage.setItem(`quizData_${currentId}`, JSON.stringify(quizData));
+    sessionStorage.setItem(`quizAnswers_${currentId}`, JSON.stringify(userAnswers));
+    sessionStorage.setItem(`quizMateri_${currentId}`, kodeMat);
+    renderQuizFromData();
+  }
+
+  function renderQuizFromData() {
+    const container=document.getElementById("quiz-container"); container.innerHTML="";
+    const badge=document.getElementById("quiz-materi-badge");
+    badge.textContent=currentMateriDef? (currentMateriDef.emoji+" "+currentMateriDef.nama):"";
+    badge.style.setProperty("--mc",currentMateriDef?.color||"var(--green-800)");
+    badge.style.setProperty("--mbg",currentMateriDef?.bg||"var(--green-100)");
+    let answeredCount=0;
+
+    quizData.forEach((q,idx)=>{
+      const card=document.createElement("div"); card.className="question-card"; card.dataset.id=q.id;
+      const selKey=userAnswers[q.id]||""; if(selKey) answeredCount++;
+      const optsHtml = q.shuffledOpts.map(o=>{
+        const sel=selKey===o.key;
+        const txtFmt = o.text.replace(/([\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+(?:\s+[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]+)*)/g,'<span class="arabic-opt">$1</span>');
+        return `<label class="option-label${sel?" selected":""}"><input type="radio" name="q_${q.id}" value="${o.key}"${sel?" checked":""}><div class="option-bullet"></div><span>${txtFmt}</span></label>`;
+      }).join("");
+      card.innerHTML=`<div class="q-number">Soal ${idx+1}</div><div class="q-text">${q.Pertanyaan_HTML}</div><div class="options-grid">${optsHtml}</div>`;
+      container.appendChild(card);
+    });
+    updateProgress(answeredCount);
+    container.querySelectorAll('.option-label input[type="radio"]').forEach(r=>{
+      r.addEventListener("change",function(){
+        const c=this.closest(".question-card"); c.classList.remove("missed");
+        c.querySelectorAll(".option-label").forEach(l=>l.classList.remove("selected"));
+        this.closest(".option-label").classList.add("selected");
+        userAnswers[c.dataset.id]=this.value;
+        sessionStorage.setItem(`quizAnswers_${currentId}`,JSON.stringify(userAnswers));
+        updateProgress();
+      });
+    });
+    if(timerBaseSeconds>0) startTimer();
+    document.getElementById("btn-submit").onclick=submitQuiz;
+    switchLayer(layerQuiz,"block");
+  }
+
+  function updateProgress(count){ const t=quizData.length, a=count!==undefined?count:Object.keys(userAnswers).length; document.getElementById("progress-text").textContent=`${a}/${t}`; }
+
+  function startTimer(){
+    const pill=document.getElementById("timer-pill"); pill.style.display="flex";
+    let endTime=sessionStorage.getItem(`timerEnd_${currentId}`);
+    if(!endTime){ endTime=Date.now()+timerBaseSeconds*1000; sessionStorage.setItem(`timerEnd_${currentId}`,endTime); }
+    else endTime=parseInt(endTime,10);
+    function tick(){
+      let rem=Math.max(0,Math.floor((endTime-Date.now())/1000));
+      pill.textContent=`⏱ ${String(Math.floor(rem/60)).padStart(2,"0")}:${String(rem%60).padStart(2,"0")}`;
+      if(rem<=60) pill.classList.add("danger");
+      if(rem<=0){ stopTimer(); alert("Waktu habis!"); executeSubmit(); return; }
+      timerInterval=setTimeout(tick,1000);
+    }
+    tick();
+  }
+  function stopTimer(){ if(timerInterval){ clearTimeout(timerInterval); timerInterval=null; } document.getElementById("timer-pill").style.display="none"; }
+
+  function submitQuiz(){
+    let missed=null;
+    document.querySelectorAll(".question-card").forEach(c=>{ if(!c.querySelector('input[type="radio"]:checked')){ c.classList.add("missed"); if(!missed) missed=c; } });
+    if(missed){ missed.scrollIntoView({behavior:"smooth",block:"center"}); return; }
+    stopTimer(); executeSubmit();
+  }
+
+  async function executeSubmit(){
+    showLoading("Mengoreksi...","Koneksi ke server");
+    const answers={};
+    document.querySelectorAll(".question-card").forEach(c=>{ const ch=c.querySelector('input[type="radio"]:checked'); if(ch) answers[c.dataset.id]=ch.value; });
+    const payload={ name:currentId, materi:currentMateri, answers, totalSoal:quizData.length };
+    try{
+      const r=await fetch(GAS_URL,{method:"POST",body:JSON.stringify(payload)});
+      const data=await r.json();
+      hideLoading();
+      if(data.status==="success"){ clearSession(); showResult(data); }
+      else alert("Kesalahan: "+(data.message||""));
+    }catch(e){ hideLoading(); alert("Gagal mengirim."); }
+  }
+
+  function showResult(data){
+    const score=Math.round(data.score);
+    const mDef=MATERI_LIST.find(m=>m.kode===data.materi)||{kode:"SEMUA",nama:"Semua Materi",emoji:"🎯",color:"#0f172a",bg:"#f1f5f9"};
+    const chip=document.getElementById("result-materi-chip"); chip.textContent=mDef.emoji+" "+mDef.nama; chip.style.setProperty("--mc",mDef.color); chip.style.setProperty("--mbg",mDef.bg);
+    let emoji,title,msg;
+    if(score>=90){ emoji="🏆"; title="Luar Biasa!"; msg="Hasil sangat membanggakan."; }
+    else if(score>=75){ emoji="🌟"; title="Bagus Sekali!"; msg="Nilaimu sudah baik."; }
+    else if(score>=60){ emoji="👍"; title="Cukup Baik!"; msg="Hampir sempurna."; }
+    else{ emoji="💪"; title="Semangat!"; msg="Jangan menyerah."; }
+    document.getElementById("result-emoji").textContent=emoji;
+    document.getElementById("result-title").textContent=title;
+    document.getElementById("result-name").textContent=currentName;
+    document.getElementById("final-score").textContent=score;
+    document.getElementById("correct-count").textContent=data.correct;
+    document.getElementById("total-count").textContent=data.total;
+    document.getElementById("attempt-count").textContent=data.attempt;
+    document.getElementById("result-message").textContent=msg;
+    const circ=2*Math.PI*60, arc=document.getElementById("score-arc");
+    arc.style.strokeDasharray=circ; arc.style.strokeDashoffset=circ;
+    switchLayer(layerResult,"flex");
+    requestAnimationFrame(()=>{ arc.style.stroke=mDef.color; arc.style.strokeDashoffset=circ*(1-score/100); });
+  }
+
+  document.getElementById("btn-retry").addEventListener("click",()=>{
+    stopTimer(); clearSession();
+    const limitKey=`Jumlah_${currentMateri}`; const limit=globalSettings[limitKey]?parseInt(globalSettings[limitKey]):null;
+    startQuiz(currentMateri,currentMateriDef,limit);
+  });
+  document.getElementById("btn-change-materi").addEventListener("click",()=>{ stopTimer(); clearSession(); openGateway(); });
+  document.getElementById("btn-end").addEventListener("click",()=>{
+    stopTimer(); clearSession(); currentId=""; currentName=""; currentSchool="";
+    inputId.value=""; btnLogin.disabled=true; loginErr.style.display="none"; switchLayer(layerLogin,"flex");
+  });
+
+  document.getElementById("btn-quiz-exit").addEventListener("click",()=>{ document.getElementById("exit-dialog").style.display="flex"; });
+  document.getElementById("btn-exit-cancel").addEventListener("click",()=>{ document.getElementById("exit-dialog").style.display="none"; });
+  document.getElementById("btn-exit-confirm").addEventListener("click",()=>{
+    document.getElementById("exit-dialog").style.display="none"; stopTimer(); clearSession(); openGateway();
+  });
+
+  function clearSession(){
     sessionStorage.removeItem("activeQuizId");
     sessionStorage.removeItem(`quizData_${currentId}`);
     sessionStorage.removeItem(`quizAnswers_${currentId}`);
