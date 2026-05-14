@@ -476,6 +476,7 @@
   let timerBaseSeconds = 0;
   let quizData         = [];
   let userAnswers      = {};
+  let isSubmitting     = false; // ← cegah double submit
 
   const layerLogin   = document.getElementById("layer-login");
   const layerGateway = document.getElementById("layer-gateway");
@@ -593,7 +594,9 @@
   });
 
   function startQuiz(kodeMat, materiDef, limit) {
-    clearSession(); currentMateri=kodeMat; currentMateriDef=materiDef; applyMateriTheme(materiDef.color,materiDef.bg);
+    stopTimer(); // ← penting agar tidak double timer
+    clearSession();
+    currentMateri=kodeMat; currentMateriDef=materiDef; applyMateriTheme(materiDef.color,materiDef.bg);
     let pool = kodeMat==="SEMUA"? [...globalQuestions] : globalQuestions.filter(q=>String(q.Nomor||"").split("-")[0].trim().toUpperCase()===kodeMat);
     if(pool.length===0){ alert(`Belum ada soal untuk "${materiDef.nama}".`); return; }
     pool = shuffleArray(pool);
@@ -608,6 +611,7 @@
   }
 
   function renderQuizFromData() {
+    stopTimer(); // ← pastikan timer lama mati
     const container=document.getElementById("quiz-container"); container.innerHTML="";
     const badge=document.getElementById("quiz-materi-badge");
     badge.textContent=currentMateriDef? (currentMateriDef.emoji+" "+currentMateriDef.nama):"";
@@ -645,6 +649,7 @@
   function updateProgress(count){ const t=quizData.length, a=count!==undefined?count:Object.keys(userAnswers).length; document.getElementById("progress-text").textContent=`${a}/${t}`; }
 
   function startTimer(){
+    stopTimer(); // pastikan hanya 1 interval
     const pill=document.getElementById("timer-pill"); pill.style.display="flex";
     let endTime=sessionStorage.getItem(`timerEnd_${currentId}`);
     if(!endTime){ endTime=Date.now()+timerBaseSeconds*1000; sessionStorage.setItem(`timerEnd_${currentId}`,endTime); }
@@ -661,16 +666,22 @@
   function stopTimer(){ if(timerInterval){ clearTimeout(timerInterval); timerInterval=null; } document.getElementById("timer-pill").style.display="none"; }
 
   function submitQuiz(){
+    if(isSubmitting) return; // cegah double click
     let missed=null;
     document.querySelectorAll(".question-card").forEach(c=>{ if(!c.querySelector('input[type="radio"]:checked')){ c.classList.add("missed"); if(!missed) missed=c; } });
     if(missed){ missed.scrollIntoView({behavior:"smooth",block:"center"}); return; }
-    stopTimer(); executeSubmit();
+    stopTimer();
+    executeSubmit();
   }
 
   async function executeSubmit(){
+    if(isSubmitting) return;
+    isSubmitting = true;
+    document.getElementById("btn-submit").disabled = true;
     showLoading("Mengoreksi...","Koneksi ke server");
     const answers={};
     document.querySelectorAll(".question-card").forEach(c=>{ const ch=c.querySelector('input[type="radio"]:checked'); if(ch) answers[c.dataset.id]=ch.value; });
+    // totalSoal dikirim hanya untuk informasi, backend hitung sendiri dari kunci yang relevan
     const payload={ name:currentId, materi:currentMateri, answers, totalSoal:quizData.length };
     try{
       const r=await fetch(GAS_URL,{method:"POST",body:JSON.stringify(payload)});
@@ -679,6 +690,10 @@
       if(data.status==="success"){ clearSession(); showResult(data); }
       else alert("Kesalahan: "+(data.message||""));
     }catch(e){ hideLoading(); alert("Gagal mengirim."); }
+    finally {
+      isSubmitting = false;
+      document.getElementById("btn-submit").disabled = false;
+    }
   }
 
   function showResult(data){
